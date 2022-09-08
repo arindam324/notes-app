@@ -4,7 +4,7 @@ import {PencilSquareIcon} from '@heroicons/react/24/outline'
 
 const Sidebar = () => {
     return (
-        <aside className={"max-w-[250px] w-full min-h-screen bg-gray-200 flex flex-col py-4"}>
+        <aside className={"max-w-[250px]  w-full min-h-screen bg-gray-200 flex flex-col py-4"}>
             <NavLink Icon={<PencilSquareIcon className={"h-6"}/>} name={"Notes"} isActive/>
         </aside>
     )

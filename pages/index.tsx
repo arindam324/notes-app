@@ -19,7 +19,7 @@ const Home: NextPage = () => {
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
 
-            <main className={"flex"}>
+            <main className={"flex min-h-screen"}>
                 <Sidebar/>
                 <AppBar/>
                 <Editor/>
