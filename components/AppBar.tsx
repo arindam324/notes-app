@@ -1,6 +1,6 @@
 import React from "react";
 import {MagnifyingGlassIcon, PlusIcon} from '@heroicons/react/24/outline'
-import {ScrollArea} from '@mantine/core'
+import {ScrollArea, useMantineColorScheme} from '@mantine/core'
 
 const Data = [
     {
@@ -92,8 +92,12 @@ const Data = [
 
 
 const AppBar = () => {
+
+    const {colorScheme} = useMantineColorScheme()
+
     return (
-        <div className={"max-w-[450px]  pt-4 border-r w-full min-h-screen"}>
+        <div
+            className={`max-w-[450px]  pt-4 border-r w-full min-h-screen ${colorScheme === 'dark' ? "bg-black text-white" : ""} `}>
             <div className={"flex items-center px-6 justify-between"}>
                 <h2 className={"text-2xl font-semibold"}>Notes</h2>
                 <div className={"flex space-x-4"}>
@@ -145,8 +149,12 @@ const NotesCard: React.FC<NotesCardProps> = (props) => {
         tags,
         date
     } = props;
+    {/* TODO: find another way rather than calling the hook twice */
+    }
+    const {colorScheme} = useMantineColorScheme()
     return (
-        <div className={"px-2 cursor-pointer hover:bg-gray-100   p-2"}>
+        <div
+            className={`px-2 cursor-pointer    p-2 ${colorScheme === 'dark' ? 'hover:bg-gray-600 ' : 'hover:bg-gray-100'}`}>
             <h2 style={{color: COLORS[Math.floor(Math.random() * 5) + 1]}}
                 className={"text-2xl font-semibold"}>{heading}</h2>
             <p>{description}</p>
