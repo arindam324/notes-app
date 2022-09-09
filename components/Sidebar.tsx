@@ -1,22 +1,25 @@
 import React, {ReactElement} from "react";
 
-import {PencilSquareIcon} from '@heroicons/react/24/outline'
-import {Button, useMantineColorScheme} from '@mantine/core'
+import {SunIcon, MoonIcon, PencilSquareIcon} from '@heroicons/react/24/outline'
+import {useMantineColorScheme} from '@mantine/core'
 
 
 const Sidebar = () => {
     const {colorScheme, toggleColorScheme} = useMantineColorScheme();
     return (
         <aside
-            className={`max-w-[250px]  w-full min-h-screen bg-gray-200 flex flex-col py-4 justify-between ${colorScheme === 'dark' ? 'bg-[#1a2421] text-white' : ""} `}>
-            <nav>
+            className={`max-w-[250px]  w-full min-h-screen bg-gray-200 items-center flex flex-col py-4 justify-between ${colorScheme === 'dark' ? 'bg-[#1a2421] text-white' : ""} `}>
+            <nav className={"w-full"}>
                 <NavLink Icon={<PencilSquareIcon className={"h-6"}/>} name={"Notes"} isActive/>
             </nav>
 
-            <div className={"sel"}>
-                <Button variant={"subtle"} color={"dark"} onClick={() => toggleColorScheme()}>
-                    {colorScheme === "dark" ? "Light Theme" : "Dark Theme"}
-                </Button>
+            <div className={"w-full flex items-center flex-col"}>
+                <button
+                    className={"w-[80%]  py-2 rounded-lg font-semibold border-gray-700 hover:border flex space-x-4 justify-center"}
+                    onClick={() => toggleColorScheme()}>
+                    {colorScheme === 'dark' ? (<SunIcon className={"h-6"}/>) : (<MoonIcon className={"h-6"}/>)}
+                    <p>{colorScheme === "dark" ? "Light Theme" : "Dark Theme"}</p>
+                </button>
             </div>
         </aside>
     )
