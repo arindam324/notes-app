@@ -4,6 +4,7 @@ import Head from 'next/head'
 import Sidebar from '@components/Sidebar'
 import AppBar from "@components/AppBar";
 import dynamic from "next/dynamic";
+import EditorProvider from "../Context/EditorProvider";
 
 
 const Editor = dynamic(() => import("@components/Editor"), {
@@ -19,11 +20,13 @@ const Home: NextPage = () => {
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
 
-            <main className={"flex min-h-screen"}>
-                <Sidebar/>
-                <AppBar/>
-                <Editor/>
-            </main>
+            <EditorProvider>
+                <main className={"flex min-h-screen"}>
+                    <Sidebar/>
+                    <AppBar/>
+                    <Editor/>
+                </main>
+            </EditorProvider>
         </div>
     )
 }
