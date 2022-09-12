@@ -33,14 +33,6 @@ const Editor = () => {
                         onChange={editor.setValue}
                     />
                 )}
-
-                {/*<TypographyStylesProvider>*/}
-                {/*    {editor?.value && (*/}
-                {/*        <div dangerouslySetInnerHTML={{__html: editor.value}}/>*/}
-                {/*    )}*/}
-
-                {/*</TypographyStylesProvider>*/}
-
             </ScrollArea>
         </div>
     )

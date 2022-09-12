@@ -3,6 +3,8 @@ import type {AppProps} from 'next/app'
 
 import {ColorSchemeProvider, MantineProvider, ColorScheme} from '@mantine/core'
 import {useLocalStorage} from "@mantine/hooks";
+import {withTRPC} from '@trpc/next'
+import {AppRouter} from "./api/trpc/[trpc]";
 
 
 function MyApp({Component, pageProps}: AppProps) {
@@ -29,4 +31,14 @@ function MyApp({Component, pageProps}: AppProps) {
     )
 }
 
-export default MyApp
+export default withTRPC<AppRouter>({
+    config({ctx}) {
+        const url = process.env.VERCEL_URL
+            ? `https://${process.env.VERCEL_URL}/api/trpc`
+            : 'http://localhost:3000/api/trpc';
+        return {
+            url,
+        };
+    },
+    ssr: true,
+})(MyApp)
